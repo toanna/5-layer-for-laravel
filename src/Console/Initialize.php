@@ -1,5 +1,5 @@
 <?php
-namespace ToanNA\Laravel5Layer\Console;
+namespace Toanna\Laravel5Layer\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
