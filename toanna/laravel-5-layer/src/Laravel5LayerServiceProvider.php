@@ -1,7 +1,7 @@
 <?php
 namespace Toanna\Laravel5Layer;
 use Illuminate\Support\ServiceProvider;
-class ArtisanCommandsServiceProvider extends ServiceProvider
+class Laravel5LayerServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
