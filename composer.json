@@ -3,16 +3,30 @@
     "description": "A dev toolkit to transform Laravel to 5-Layered Architecture",
     "type": "package",
     "license": "MIT",
-    "homepage": "https://nguyenanhtoan.com",
     "authors": [
         {
             "name": "AT Nguyen",
-            "email": "anhtoan.dev@gmail.com"
+            "email": "anhtoan.dev@gmail.com",
+            "homepage": "https://nguyenanhtoan.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": "^5.6.37 || ^7.0"
+        "php": ">=7.1",
+        "laravel/framework": "~5.5.0"
     },
-    "require-dev": {}
+    "require-dev": {},
+    "autoload": {
+        "psr-4": {
+            "Toanna\\Laravel5Layer\\": "src"
+        }
+    },
+    "autoload-dev": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Toanna\\Laravel5Layer\\Laravel5LayerServiceProvider"
+            ]
+        }
+    }
 }
