@@ -2,6 +2,7 @@
 namespace Toanna\Laravel5Layer\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Support\Str;
 
 class Initialize extends Command
@@ -17,7 +18,7 @@ class Initialize extends Command
      *
      * @var string
      */
-    protected $description = 'Init folder structure';
+    protected $description = 'Init 5-layer folder structure';
     /**
      * The name and signature of the console command.
      *
@@ -29,6 +30,153 @@ class Initialize extends Command
      */
     public function handle()
     {
+        if ($this->confirm('Your default structure will be changed, some files may lost while changing directories, are you sure to run?')) {
+            $appDirectory = $this->getAppPath();
+            $existFilesToMove = $this->existFilesToMove();
+            $baseAppNamespace = $this->getAppNamespace();
+            $bootstrapApp = $this->getBasePath().'/bootstrap/app.php';
 
+            // STEP 1: Make folder structure
+            if (!is_dir($appDirectory)) {
+                mkdir($appDirectory);
+            }
+            $this->parseAndMakeDir($appDirectory, $this->getFolderStructure());
+
+            // STEP 2: Move exist files to new folder & rename Namespace
+            foreach ($existFilesToMove as $source => $destination) {
+                $sourceFullDir = $appDirectory . '/' . $source;
+                $destinationFullDir = $appDirectory . '/' . $destination;
+                $this->copyFolderAndFilesRecursive($sourceFullDir, $destinationFullDir);
+                $this->removeFolderAndFilesRecursive($sourceFullDir);
+                $this->renameNamespaceRecursive($destinationFullDir, $baseAppNamespace.$source, $baseAppNamespace.str_replace('/', '\\', $destination));
+            }
+
+            // STEP 3: Modify bootstrap/app.php
+            foreach ($existFilesToMove as $source => $destination) {
+                $this->renameNamespaceRecursive($bootstrapApp, $baseAppNamespace.$destination, $baseAppNamespace.str_replace('/', '\\', $destination));
+            }
+        }
+    }
+
+    /**
+     * MATERIALS
+     */
+
+    use DetectsApplicationNamespace;
+
+    protected function getFolderStructure()
+    {
+        return [
+            'Abstraction' => [
+                'ExternalServiceInterface' => [],
+                'RepositoryInterface' => []
+            ],
+            'Business' => [],
+            'BusinessService' => [],
+            'Common' => [
+                'CircuitBreaker' => [],
+                'DomainModels' => [],
+                'Exceptions' => [],
+                'ExternalConfig' => [],
+                'Logging' => []
+            ],
+            'Dependency' => [
+                'ExternalServices' => [],
+                'Repositories' => []
+            ],
+            'Providers' => [],
+            'Representation' => [
+                'Console' => [],
+                'Http' => [
+                    'Controllers' => [],
+                    'Middleware' => []
+                ]
+            ]
+        ];
+    }
+
+    protected function existFilesToMove()
+    {
+        return [
+            'Console' => 'Representation/Console',
+            'Http' => 'Representation/Http',
+            'Exceptions' => 'Common/Exceptions',
+        ];
+    }
+
+    protected function getBasePath()
+    {
+        return base_path();
+    }
+
+    protected function getAppPath()
+    {
+        return app_path();
+    }
+
+    /**
+     * FILE HANDLERS
+     */
+
+    protected function parseAndMakeDirRecursive($baseDirectory, array $folders)
+    {
+        foreach ($folders as $folderName => $folderDirectories) {
+            $currentFolder = "$baseDirectory/$folderName";
+            if (!is_dir($currentFolder)) {
+                mkdir($currentFolder);
+            }
+            if (is_array($folderDirectories) && count($folderDirectories) > 0) {
+                $this->parseAndMakeDirRecursive($currentFolder, $folderDirectories);
+            }
+        }
+    }
+
+    protected function removeFolderAndFilesRecursive($directory)
+    {
+        if (is_dir($directory)) {
+            $files = scandir($directory);
+            foreach ($files as $file) {
+                if ($file != "." && $file != "..") {
+                    $this->removeFolderAndFilesRecursive("$directory/$file");
+                }
+            }
+            rmdir($directory);
+        } elseif (file_exists($directory)) {
+            unlink($directory);
+        }
+    }
+
+    protected function copyFolderAndFilesRecursive($from, $to)
+    {
+        if (is_dir($from)) {
+            if (file_exists($to)) {
+                $this->removeFolderAndFilesRecursive($to);
+            }
+            @mkdir($to);
+            $files = scandir($from);
+            foreach ($files as $file) {
+                if ($file != "." && $file != "..") {
+                    $this->copyFolderAndFilesRecursive("$from/$file", "$to/$file");
+                }
+            }
+        } elseif (file_exists($from)) {
+            copy($from, $to);
+        }
+    }
+
+    protected function renameNamespaceRecursive($basePath, $from, $to)
+    {
+        if (is_dir($basePath)) {
+            $files = scandir($basePath);
+            foreach ($files as $file) {
+                if ($file != "." && $file != "..") {
+                    $this->renameNamespaceRecursive("$basePath/$file", $from, $to);
+                }
+            }
+        } elseif (file_exists($basePath)) {
+            $tempContent = file_get_contents($basePath);
+            $newContent = str_replace($from, $to, $tempContent);
+            file_put_contents($basePath, $newContent);
+        }
     }
 }
