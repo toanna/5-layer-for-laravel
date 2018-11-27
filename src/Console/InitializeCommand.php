@@ -40,7 +40,7 @@ class InitializeCommand extends Command
             if (!is_dir($appDirectory)) {
                 mkdir($appDirectory);
             }
-            $this->parseAndMakeDir($appDirectory, $this->getFolderStructure());
+            $this->parseAndMakeDirRecursive($appDirectory, $this->getFolderStructure());
 
             // STEP 2: Move exist files to new folder & rename Namespace
             foreach ($existFilesToMove as $source => $destination) {
