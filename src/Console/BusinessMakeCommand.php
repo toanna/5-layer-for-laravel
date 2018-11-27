@@ -25,7 +25,14 @@ class BusinessMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:business';
+    protected $signature = '5l:business {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l business';
 
     /**
      * Get the stub file for the generator.

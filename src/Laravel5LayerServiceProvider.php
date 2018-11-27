@@ -13,18 +13,18 @@ class Laravel5LayerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Console\InitializeCommand::class,
-                //Console\AbstractionMakeCommand::class,
-                //Console\BusinessMakeCommand::class,
-                //Console\BusinessServiceMakeCommand::class,
-                //Console\ConsoleMakeCommand::class,
-                //Console\ControllerMakeCommand::class,
-                //Console\ApiControllerMakeCommand::class,
-                //Console\DependencyMakeCommand::class,
-                //Console\DomainModelMakeCommand::class,
-                //Console\EloquentMakeCommand::class,
-                //Console\ExceptionMakeCommand::class,
-                //Console\RequestMakeCommand::class,
-                //Console\ResourceMakeCommand::class,
+                Console\AbstractionMakeCommand::class,
+                Console\BusinessMakeCommand::class,
+                Console\BusinessServiceMakeCommand::class,
+                Console\ConsoleMakeCommand::class,
+                Console\ControllerMakeCommand::class,
+                Console\ApiControllerMakeCommand::class,
+                Console\DependencyMakeCommand::class,
+                Console\DomainModelMakeCommand::class,
+                Console\EloquentMakeCommand::class,
+                Console\ExceptionMakeCommand::class,
+                Console\RequestMakeCommand::class,
+                Console\ResourceMakeCommand::class,
             ]);
         }
     }

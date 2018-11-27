@@ -25,7 +25,14 @@ class ExceptionMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:exception';
+    protected $signature = '5l:exception {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l exception';
 
     /**
      * Get the stub file for the generator.

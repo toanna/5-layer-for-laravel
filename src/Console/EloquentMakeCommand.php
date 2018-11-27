@@ -25,7 +25,14 @@ class EloquentMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:eloquent';
+    protected $signature = '5l:eloquent {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l eloquent';
 
     /**
      * Get the stub file for the generator.

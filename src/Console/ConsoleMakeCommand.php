@@ -25,7 +25,14 @@ class ConsoleMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = '5l:command';
+    protected $signature = '5l:command {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l command';
 
     /**
      * Get the default namespace for the class.

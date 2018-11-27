@@ -25,7 +25,14 @@ class ApiControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:api_controller';
+    protected $signature = '5l:api_controller {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l api_controller';
 
     /**
      * Get the stub file for the generator.

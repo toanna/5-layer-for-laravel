@@ -25,7 +25,14 @@ class AbstractionMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:abstraction';
+    protected $signature = '5l:abstraction {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l abstraction';
 
     /**
      * Get the stub file for the generator.

@@ -26,7 +26,14 @@ class RequestMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = '5l:request';
+    protected $signature = '5l:request {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l request';
 
     /**
      * Get the default namespace for the class.

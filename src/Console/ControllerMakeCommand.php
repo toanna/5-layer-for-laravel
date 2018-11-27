@@ -25,7 +25,14 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:controller';
+    protected $signature = '5l:controller {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l controller';
 
     /**
      * Get the stub file for the generator.

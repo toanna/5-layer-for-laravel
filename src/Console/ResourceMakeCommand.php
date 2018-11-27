@@ -26,7 +26,14 @@ class ResourceMakeCommand extends Command
      *
      * @var string
      */
-    protected $signature = '5l:resource';
+    protected $signature = '5l:resource {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l resource';
 
     /**
      * Get the default namespace for the class.

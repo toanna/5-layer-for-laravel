@@ -26,7 +26,14 @@ class DomainModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:domain_model';
+    protected $signature = '5l:domain_model {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l domain_model';
 
     /**
      * Replace the class name for the given stub.

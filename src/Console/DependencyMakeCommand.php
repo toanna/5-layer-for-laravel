@@ -25,7 +25,14 @@ class DependencyMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = '5l:business';
+    protected $signature = '5l:dependency {name}';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l dependency';
 
     /**
      * Get the stub file for the generator.
