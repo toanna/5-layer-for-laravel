@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model as Eloquent;
+
+class DummyClass extends Eloquent
+{
+    //
+}

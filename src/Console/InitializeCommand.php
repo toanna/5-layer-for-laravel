@@ -5,7 +5,7 @@ use Illuminate\Console\Command;
 use Illuminate\Console\DetectsApplicationNamespace;
 use Illuminate\Support\Str;
 
-class Initialize extends Command
+class InitializeCommand extends Command
 {
     /**
      * The console command name.
@@ -88,7 +88,9 @@ class Initialize extends Command
             'Representation' => [
                 'Console' => [],
                 'Http' => [
-                    'Controllers' => [],
+                    'Controllers' => [
+                        'Api' => []
+                    ],
                     'Middleware' => []
                 ]
             ]
