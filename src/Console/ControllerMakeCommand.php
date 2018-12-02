@@ -11,7 +11,7 @@ class ControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'saf:controller';
+    protected $name = 'l5:controller';
 
     /**
      * The console command description.

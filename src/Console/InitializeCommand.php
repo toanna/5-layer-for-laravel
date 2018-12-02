@@ -3,7 +3,6 @@ namespace Toanna\Laravel5Layer\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\DetectsApplicationNamespace;
-use Illuminate\Support\Str;
 
 class InitializeCommand extends Command
 {
@@ -55,6 +54,9 @@ class InitializeCommand extends Command
             foreach ($existFilesToMove as $source => $destination) {
                 $this->renameNamespaceRecursive($bootstrapApp, $baseAppNamespace.$destination, $baseAppNamespace.str_replace('/', '\\', $destination));
             }
+
+            // STEP 4: Extend handles
+            $this->extendHandle();
         }
     }
 
@@ -180,5 +182,14 @@ class InitializeCommand extends Command
             $newContent = str_replace($from, $to, $tempContent);
             file_put_contents($basePath, $newContent);
         }
+    }
+
+    /**
+     * EXTEND HANDLE
+     */
+
+    protected function extendHandle()
+    {
+
     }
 }

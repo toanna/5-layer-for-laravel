@@ -11,7 +11,7 @@ class ApiControllerMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'saf:api_controller';
+    protected $name = '5l:api_controller';
 
     /**
      * The console command description.
