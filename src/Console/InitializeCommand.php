@@ -62,7 +62,7 @@ class InitializeCommand extends Command
 
             // STEP 3: Modify bootstrap/app.php
             foreach ($existFilesToMove as $source => $destination) {
-                $this->renameNamespaceRecursive($bootstrapApp, $baseAppNamespace.$destination, $baseAppNamespace.str_replace('/', '\\', $destination));
+                $this->renameNamespaceRecursive($bootstrapApp, $baseAppNamespace.str_replace('/', '\\', $source), $baseAppNamespace.str_replace('/', '\\', $destination));
             }
 
             // STEP 4: Extend handles
