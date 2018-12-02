@@ -12,18 +12,28 @@ class InitializeCommand extends Command
      * @var string
      */
     protected $name = '5l:init';
+
     /**
      * The console command description.
      *
      * @var string
      */
     protected $description = 'Init 5-layer folder structure';
+
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
     protected $signature = '5l:init';
+
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = '5l init';
+
     /**
      * Reset database configuration.
      */
@@ -57,6 +67,9 @@ class InitializeCommand extends Command
 
             // STEP 4: Extend handles
             $this->extendHandle();
+
+            // FINAL
+            $this->line('Success initialization.');
         }
     }
 
