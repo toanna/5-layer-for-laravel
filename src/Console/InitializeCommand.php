@@ -65,7 +65,13 @@ class InitializeCommand extends Command
                 $this->renameNamespaceRecursive($bootstrapApp, $baseAppNamespace.str_replace('/', '\\', $source), $baseAppNamespace.str_replace('/', '\\', $destination));
             }
 
-            // STEP 4: Extend handles
+            // STEP 4: Modify app/Providers/RouteServiceProvider.php
+            $routeProvider = $this->getBasePath().'/app/Providers/RouteServiceProvider.php';
+            foreach ($existFilesToMove as $source => $destination) {
+                $this->renameNamespaceRecursive($routeProvider, $baseAppNamespace.$destination, $baseAppNamespace.str_replace('/', '\\', $destination));
+            }
+
+            // STEP 5: Extend handles
             $this->extendHandle();
 
             // FINAL
