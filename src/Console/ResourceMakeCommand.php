@@ -22,13 +22,6 @@ class ResourceMakeCommand extends Command
     protected $description = 'Create a new Resource';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:resource {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

@@ -21,13 +21,6 @@ class BusinessMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Business Logic Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:business {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

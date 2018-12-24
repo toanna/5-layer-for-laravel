@@ -22,13 +22,6 @@ class RequestMakeCommand extends Command
     protected $description = 'Create a new Form Request Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:request {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

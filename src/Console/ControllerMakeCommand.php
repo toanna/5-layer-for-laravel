@@ -21,13 +21,6 @@ class ControllerMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Controller Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:controller {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

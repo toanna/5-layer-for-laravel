@@ -21,13 +21,6 @@ class ExceptionMakeCommand extends GeneratorCommand
     protected $description = 'Create a new custom Exception Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:exception {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

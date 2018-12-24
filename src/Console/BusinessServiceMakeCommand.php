@@ -21,13 +21,6 @@ class BusinessServiceMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Business Service Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:business_service {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

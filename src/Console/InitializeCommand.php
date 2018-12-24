@@ -21,13 +21,6 @@ class InitializeCommand extends Command
     protected $description = 'Init 5-layer folder structure';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:init';
-
-    /**
      * The type of class being generated.
      *
      * @var string

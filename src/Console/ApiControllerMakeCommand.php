@@ -21,13 +21,6 @@ class ApiControllerMakeCommand extends GeneratorCommand
     protected $description = 'Create a new API Controller Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:api_controller {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

@@ -21,13 +21,6 @@ class EloquentMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Eloquent ORM Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:eloquent {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

@@ -22,13 +22,6 @@ class DomainModelMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Domain Model Class';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:domain_model {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string

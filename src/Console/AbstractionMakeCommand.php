@@ -21,13 +21,6 @@ class AbstractionMakeCommand extends GeneratorCommand
     protected $description = 'Create a new Abstraction Interface';
 
     /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = '5l:abstraction {name}';
-
-    /**
      * The type of class being generated.
      *
      * @var string
